@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace ThreeBody.Windows.Models
 {
@@ -60,12 +61,51 @@ namespace ThreeBody.Windows.Models
         /// <summary>
         /// Position of the object in meters.
         /// </summary>
-        public Vector Position { get; set; }
+        private Vector _Position;
+        public Vector Position
+        {
+            get
+            {
+                return _Position;
+            }
+            set
+            {
+                if (_Position != value)
+                {
+                    _Position = value;
+                    OnPropertyChanged();
+                    OnPropertyChangedExplicit(nameof(PositionAsThickness));
+                }
+            }
+        }
+
+        public Thickness PositionAsThickness
+        {
+            get
+            {
+                return new Thickness(Position.X, Position.Y, 0, 0);
+            }
+        }
 
         /// <summary>
         /// Velocity of the object in meters/second.
         /// </summary>
-        public Vector Velocity { get; set; }
+        private Vector _Velocity;
+        public Vector Velocity
+        {
+            get
+            {
+                return _Velocity;
+            }
+            set
+            {
+                if (_Velocity != value)
+                {
+                    _Velocity = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         #endregion
 
         #region Calculated Properties
@@ -88,6 +128,11 @@ namespace ThreeBody.Windows.Models
             {
                 return Area * Density;
             }
+        }
+
+        public override string ToString()
+        {
+            return $"X: {Position.X} Y: {Position.Y} dX: {Velocity.X} dY: {Velocity.Y} Diameter: {Diameter} Mass: {Mass}";
         }
         #endregion
 

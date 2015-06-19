@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace ThreeBody.Windows.Models
 {
@@ -79,6 +80,11 @@ namespace ThreeBody.Windows.Models
         public static Vector operator /(Vector a, double b)
         {
             return new Vector(a.X / b, a.Y / b);
+        }
+
+        public override string ToString()
+        {
+            return $"X: {X} Y: {Y} Length: {Length}";
         }
 
         #region INotifyPropertyChanged Implementation

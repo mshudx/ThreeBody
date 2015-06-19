@@ -8,6 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Button x:Name="ResetButton" Content="Reset" VerticalAlignment="Top" HorizontalAlignment="Left" Tapped="ResetButton_Tapped" Margin="10,10,0,0"></Button>
+        <Ellipse Height="{Binding PhysicsEngine.Bodies[0].Diameter, Mode=OneWay}" Width="{Binding PhysicsEngine.Bodies[0].Diameter, Mode=OneWay}" Margin="{Binding PhysicsEngine.Bodies[0].PositionAsThickness, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="Black"></Ellipse>
+        <Ellipse Height="{Binding PhysicsEngine.Bodies[1].Diameter, Mode=OneWay}" Width="{Binding PhysicsEngine.Bodies[1].Diameter, Mode=OneWay}" Margin="{Binding PhysicsEngine.Bodies[1].PositionAsThickness, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="#FF457445"></Ellipse>
+        <Ellipse Height="{Binding PhysicsEngine.Bodies[2].Diameter, Mode=OneWay}" Width="{Binding PhysicsEngine.Bodies[2].Diameter, Mode=OneWay}" Margin="{Binding PhysicsEngine.Bodies[2].PositionAsThickness, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="#FF2C2CFF"></Ellipse>
     </Grid>
 </Page>
