@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 namespace ThreeBody.Windows.Models
 {
     /// <summary>
-    /// Implements a simple physics engine supporting Newton's first law of motion 
-    /// and Newton's law of universal gravitation (so yes gravity, no collisions).
+    /// Implements a simple physics engine supporting Newton's laws of motion and Newton's law of universal gravitation 
+    /// (so there are collisions and gravity).
+    /// TODO collision
     /// </summary>
     public class PhysicsEngine
     {

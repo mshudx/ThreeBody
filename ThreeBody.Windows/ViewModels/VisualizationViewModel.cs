@@ -24,7 +24,7 @@ namespace ThreeBody.Windows.ViewModels
             for (int i = 0; i < 3; i++) PhysicsEngine.Bodies.Add(GenerateRandomBody());
 
             lastTick = DateTime.Now;
-            timer.Interval = TimeSpan.FromMilliseconds(25);
+            timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
@@ -33,8 +33,8 @@ namespace ThreeBody.Windows.ViewModels
         {
             return new Body()
             {
-                Diameter = random.Next(100, 300),
-                Density = 0.01,
+                Diameter = random.Next(10, 30),
+                Density = 0.3,
                 Position = new Vector(random.Next(200, 600), random.Next(200, 600)),
                 Velocity = new Vector(random.Next(-50, 50), random.Next(-50, 50))
             };
