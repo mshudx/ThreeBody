@@ -52,6 +52,7 @@ namespace ThreeBody.Windows.Models
         /// </remarks>
         private void CalculateGravityEffects(Body body1, Body body2, double secondsElapsed)
         {
+            // Newton's Law of Universal Gravitation
             // Calculate direction of the force
             // "Every point mass attracts every single other point mass by a force pointing along the line intersecting both points."
             var direction = GetDirectionUnitVector(body1, body2);
@@ -62,9 +63,13 @@ namespace ThreeBody.Windows.Models
                 (body1.Mass * body2.Mass) /
                 (Math.Pow(GetDistance(body1, body2), 2));
 
-            // Calculate and set net result.
+            // Calculate force
             var force = direction * magnitude * secondsElapsed;
-            body1.Velocity += force;
+
+            // Newton's Second Law
+            // F=m*a => a=F/m
+            // Calculate acceleration and change velocity by the result
+            body1.Velocity += force / body1.Mass;
         }
 
         /// <summary>

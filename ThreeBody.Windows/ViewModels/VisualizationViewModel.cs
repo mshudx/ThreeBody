@@ -19,24 +19,24 @@ namespace ThreeBody.Windows.ViewModels
         private DispatcherTimer timer = new DispatcherTimer();
         private DateTime lastTick;
 
-        public VisualizationViewModel()
+        public VisualizationViewModel(int minX, int maxX, int minY, int maxY)
         {
-            for (int i = 0; i < 3; i++) PhysicsEngine.Bodies.Add(GenerateRandomBody());
+            for (int i = 0; i < Constants.NumberOfBodies; i++) PhysicsEngine.Bodies.Add(GenerateRandomBody(minX, maxX, minY, maxY));
 
             lastTick = DateTime.Now;
-            timer.Interval = TimeSpan.FromMilliseconds(10);
+            timer.Interval = TimeSpan.FromMilliseconds(Constants.SimulationStepIntervalInMilliseconds);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
 
-        private Body GenerateRandomBody()
+        private Body GenerateRandomBody(int minX, int maxX, int minY, int maxY)
         {
             return new Body()
             {
-                Diameter = random.Next(10, 30),
-                Density = 0.3,
-                Position = new Vector(random.Next(200, 600), random.Next(200, 600)),
-                Velocity = new Vector(random.Next(-50, 50), random.Next(-50, 50))
+                Diameter = random.Next(Constants.BodyDiameterInMetersMin, Constants.BodyDiameterInMetersMax),
+                Density = Constants.BodyDensityInKilogramsPerSquareMeter,
+                Position = new Vector(random.Next(minX, maxX), random.Next(minY, maxY)),
+                Velocity = new Vector(random.Next(-1 * Constants.BodyStartingVelocityInMetersPerSecondMax, Constants.BodyStartingVelocityInMetersPerSecondMax), random.Next(-1 * Constants.BodyStartingVelocityInMetersPerSecondMax, Constants.BodyStartingVelocityInMetersPerSecondMax))
             };
         }
 
