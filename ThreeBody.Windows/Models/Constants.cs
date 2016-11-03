@@ -18,7 +18,7 @@ namespace ThreeBody.Windows.Models
         /// <summary>
         /// Starting velocities will be between -1*this and this.
         /// </summary>
-        public const int BodyStartingVelocityInMetersPerSecondMax = 50;
+        public const int BodyStartingVelocityInMetersPerSecondMax = 20;
 
         public const double WorldGenerationMargin = 0.15;
     }
